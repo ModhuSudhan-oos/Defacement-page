@@ -1,228 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MODHUSUDHAN ROY</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Wallpoet&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Defaced! Sci-Fi Hacker - Custom Colors & Logo Move</title>
+<style>
+  /* Base Reset & Setup */
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{height:100%;overflow:hidden;font-family:'Courier New', monospace;background:#000;}
+  body{display:flex;justify-content:center;align-items:center;position:relative;}
 
-    <style>
-        /* --- GLOBAL & THEME SETUP (RED/GREEN) --- */
-        :root {
-            --dark-bg: #000000;
-            --mid-bg: #0A0003; 
-            --main-color: #33FF66; /* Bright Green */
-            --accent-color: #FF3366; /* Sharp Red - New main text color */
-            --light-text: var(--accent-color); /* ALL WHITE TEXTS ARE NOW RED */
-            
-            /* Sizing based on Viewport Width for 4K Scaling */
-            --font-size-base: 1.2vw;
-            --font-size-h1: 4.5vw;
-        }
+  /* Primary Accent Color - Kept Red */
+  :root {
+    --accent-color: #ff3333; 
+    --shadow-color: rgba(255, 51, 51, 0.7);
+  }
 
-        body {
-            background-color: var(--dark-bg);
-            color: var(--light-text); /* Now Red */
-            font-family: 'Share Tech Mono', monospace;
-            font-size: var(--font-size-base);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow: auto;
-            /* text-shadow: REMOVED */
-        }
+  /* ===== Logo Top - Green Animation Color & Floating Movement Added ===== */
+  .logo{
+    position:absolute;
+    top:100px; 
+    left:50%;
+    transform:translateX(-50%);
+    width:200px; 
+    height:auto;
+    z-index:5;
+    /* Logo animation color changed to Green */
+    filter:drop-shadow(0 0 40px #33ff33);
+    /* New animation for floating/moving */
+    animation:logoFloat 3s ease-in-out infinite alternate;
+  }
+  
+  /* New animation for floating/moving the logo */
+  @keyframes logoFloat{
+    from{transform:translateX(-50%) translateY(0) scale(1);} 
+    to{transform:translateX(-50%) translateY(20px) scale(1.05);}
+  }
 
-        /* --- CONTAINER & BORDER EFFECT (4K Ready) --- */
-        .dashboard-container {
-            width: 90%;
-            max-width: 2560px;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            padding: 40px;
-            box-sizing: border-box;
-            background-color: var(--mid-bg);
-            border: 4px solid var(--main-color);
-            box-shadow: 
-                0 0 20px var(--main-color), 
-                0 0 40px var(--accent-color) inset;
-            
-            animation: container-pulse 6s infinite alternate;
-        }
+  /* ===== Background glitch/sci-fi text layers - REQUIRED COLORS ONLY (Red, Green, Sky Blue, Red) ===== */
+  .bg-layer{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    white-space:nowrap;
+    font-weight:700;
+    text-transform:uppercase;
+    pointer-events:none;
+    user-select:none;
+    z-index:0;
+    filter:blur(0); /* Clarity Fix */
+  }
+  
+  /* Color modifications as requested */
+  .bg-1{bottom:5%; font-size:150px; animation:bgDrift1 20s linear infinite; color:rgba(255, 51, 51, 0.25);} /* Red (bg-layer bg-1) */
+  .bg-2{bottom:12%; font-size:120px; animation:bgDrift2 15s linear infinite reverse; color:rgba(50, 255, 50, 0.20);} /* Green (g-layer bg-3 সবুজ) */
+  .bg-3{bottom:18%; font-size:90px; animation:bgDrift3 25s linear infinite; color:rgba(50, 255, 255, 0.15);} /* Sky Blue (g-layer bg-3 আকাশি) */
+  .bg-4{bottom:25%; font-size:60px; animation:bgDrift4 18s linear infinite; color:rgba(255, 51, 51, 0.10);} /* Red (g-layer bg-4) */
+  
+  /* Drifting animations kept */
+  @keyframes bgDrift1{0%{transform:translateX(-60%);}50%{transform:translateX(-40%);}100%{transform:translateX(-60%);}}
+  @keyframes bgDrift2{0%{transform:translateX(-55%);}50%{transform:translateX(-35%);}100%{transform:translateX(-55%);}}
+  @keyframes bgDrift3{0%{transform:translateX(-70%);}50%{transform:translateX(-30%);}100%{transform:translateX(-70%);}}
+  @keyframes bgDrift4{0%{transform:translateX(-65%);}50%{transform:translateX(-35%);}100%{transform:translateX(-65%);}}
 
-        @keyframes container-pulse {
-            0%, 100% { border-color: var(--main-color); }
-            50% { border-color: var(--accent-color); }
-        }
+  /* ===== Content Box - Red Border/Shadow Kept ===== */
+  .content-box{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    padding:30px;
+    /* Red border maintained */
+    border:3px solid var(--accent-color);
+    border-radius:12px;
+    max-width:92vw;
+    width:min(920px,92%);
+    /* Red background/shadow maintained */
+    background:rgba(255, 0, 0, 0.08);
+    box-shadow:0 0 35px rgba(255, 0, 0, 0.15),0 0 60px rgba(255, 0, 0, 0.08);
+  }
+  
+  /* ===== Main Heading - Terrifying Glitch/Flicker & Red Color Kept ===== */
+  h1{
+    margin:0 0 14px;
+    position:relative;
+    /* Red text color maintained */
+    color:var(--accent-color);
+    font-size: clamp(30px, 7vw, 64px);
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    /* Red text shadow maintained */
+    text-shadow:0 0 10px var(--accent-color),0 0 20px var(--accent-color),0 0 40px var(--shadow-color);
+    /* Strong flicker animation kept */
+    animation:flicker 1.8s infinite;
+  }
 
-        /* --- HEADER & TYPING ANIMATION --- */
-        .header {
-            text-align: center;
-            padding-bottom: 30px;
-            border-bottom: 5px solid var(--accent-color);
-        }
+  h1::before{
+    content: attr(data-text);
+    position:absolute;
+    top:0; left:0;
+    width:100%;
+    /* Red color maintained */
+    color:var(--accent-color);
+    opacity:0.3;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    text-shadow:0 0 6px var(--shadow-color);
+    /* Terrifying Glitch Animation kept */
+    animation:glitch-anim 0.3s infinite alternate;
+  }
 
-        .header h3 {
-            font-family: 'Wallpoet', cursive;
-            font-size: var(--font-size-h1); 
-            color: var(--accent-color);
-            margin: 0;
-            letter-spacing: 0.2vw;
-            /* text-shadow: REMOVED */
-            overflow: hidden; 
-            white-space: nowrap; 
-            border-right: .05em solid var(--main-color);
-            width: 0; 
-            
-            /* Typing Animation FIX: Increased steps to 35 to ensure full text display */
-            animation: 
-                typing 3s steps(35, end) forwards, 
-                blink-caret .7s step-end infinite;
-        }
-        
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
+  /* Flicker animation (Main Text Opacity Change) */
+  @keyframes flicker{
+    0%,100%{opacity:1;}
+    50%{opacity:0.9;}
+    52%{opacity:0.85;}
+    54%{opacity:1;}
+    60%{opacity:0.9;}
+  }
 
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--main-color); }
-        }
+  /* Glitch animation (Horizontal Shift and Clip-Path) */
+  @keyframes glitch-anim {
+    0% {
+      clip-path: polygon(0 25%, 100% 25%, 100% 30%, 0 30%);
+      transform: translate(-3px, -3px) skewX(2deg);
+      text-shadow: -2px -2px var(--shadow-color);
+    }
+    30% {
+      clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%);
+      transform: translate(3px, 3px) skewX(-2deg);
+      text-shadow: 2px 2px var(--shadow-color);
+    }
+    60% {
+      clip-path: polygon(0 75%, 100% 75%, 100% 80%, 0 80%);
+      transform: translate(-5px, 0px) skewX(0.5deg);
+      text-shadow: -3px 0 var(--shadow-color);
+    }
+    90% {
+      clip-path: polygon(0 15%, 100% 15%, 100% 20%, 0 20%);
+      transform: translate(5px, -5px) skewX(-1.5deg);
+      text-shadow: 3px -3px var(--shadow-color);
+    }
+    100% {
+      clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0 100%);
+      transform: translate(0);
+      text-shadow: none;
+    }
+  }
 
-        /* --- WIDGET & STATUS --- */
-        .widget {
-            background-color: rgba(0, 0, 0, 0.6);
-            border: 1px solid var(--main-color);
-            padding: 25px;
-            box-shadow: 0 0 15px var(--main-color);
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .widget:hover {
-            box-shadow: 0 0 30px var(--accent-color);
-            border-color: var(--accent-color);
-            transform: skew(-1deg) scale(1.01);
-        }
-
-        .widget h2 {
-            font-size: 1.5em;
-            color: var(--main-color);
-            border-bottom: 1px dashed var(--main-color);
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-            /* text-shadow: REMOVED */
-        }
-        
-        .status-light {
-            width: 1.2em;
-            height: 1.2em;
-            background-color: var(--accent-color); 
-            box-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color);
-            animation: statusBlink 0.3s infinite alternate;
-        }
-
-        /* --- LOGO & IMAGE ANIMATION --- */
-        .logo-container {
-            text-align: center;
-            padding: 30px 0;
-        }
-        
-        .logo-container img {
-            width: 15vw;
-            max-width: 250px;
-            height: auto;
-            border: 5px solid var(--accent-color);
-            box-shadow: 0 0 25px var(--accent-color);
-            filter: drop-shadow(0 0 15px var(--accent-color));
-            
-            /* Advanced Glitch/Flicker Animation */
-            animation: logo-flicker 4s infinite linear, logo-spin 10s infinite linear;
-        }
-        
-        @keyframes logo-flicker {
-            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-                box-shadow: 0 0 20px var(--accent-color);
-                filter: brightness(1);
-            }
-            20%, 24%, 55% {        
-                box-shadow: 0 0 35px var(--main-color);
-                filter: brightness(1.5);
-                transform: translateX(1px);
-            }
-        }
-        
-        @keyframes logo-spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        /* --- FOOTER --- */
-        .footer {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 2px solid var(--main-color);
-            font-size: 0.7em;
-            color: var(--accent-color); /* Now Red */
-            letter-spacing: 2px;
-        }
-
-        /* --- MOBILE RESPONSIVENESS (For smaller screens) --- */
-        @media (max-width: 768px) {
-            :root {
-                --font-size-base: 14px;
-                --font-size-h1: 7vw;
-            }
-            body {
-                font-size: var(--font-size-base);
-            }
-            .dashboard-container {
-                gap: 20px;
-                padding: 20px;
-                width: 95%;
-            }
-            .header h1 {
-                font-size: var(--font-size-h1);
-                letter-spacing: 1px;
-            }
-            .logo-container img {
-                width: 40vw;
-                max-width: 150px;
-            }
-            .widget h2 {
-                font-size: 1.2em;
-            }
-        }
-    </style>
+  /* ===== Paragraph with clear typing - Red Color Kept ===== */
+  .typed{
+    display:inline-block;
+    font-size:clamp(14px,3vw,20px);
+    /* Red text color maintained */
+    color: var(--accent-color);
+    white-space:nowrap;
+    overflow:hidden;
+    /* Red caret color maintained */
+    border-right:.12em solid var(--accent-color);
+    width:0;
+    animation:typing 4s steps(50,end) 0.5s forwards, caretBlink 0.9s step-end infinite;
+  }
+  @keyframes typing{from{width:0;} to{width:100%;}}
+  @keyframes caretBlink{50%{border-color:transparent;}}
+</style>
 </head>
 <body>
 
-    <div class="dashboard-container">
-        
-        <header class="header">
-            <h3>HACKED BY MODHU ROY</h3>
-        </header>
+<img class="logo" src="https://i.ibb.co.com/FS5YyW3/Photo-Room-20250926-235830.png" alt="Logo">
 
-        <div class="widget">
-            <h2><span class="status-light"></span> // INTRUSION COMPLETE //</h2>
-            <p><strong>&gt; TARGET:</strong> System Core Access Log.</p>
-            <p><strong>&gt; ORIGIN:</strong> BANGLADESH. Educational and Proof-of-Concept Vulnerability Testing.</p>
-            <p><strong>&gt; WARNING:</strong> Data Integrity is maintained. No malicious intent. Contacting Admin.</p>
-        </div>
-        
-        <div class="logo-container">
-            <img src="https://i.ibb.co.com/S4XF2jGM/20250925-004809.png" alt="Modhu's Ultra HD Cyber Logo">
-        </div>
+<div class="bg-layer bg-1"> •System'HACKED •</div>
+<div class="bg-layer bg-2">WARNING • DEFACED • CYBER ATTACK •</div>
+<div class="bg-layer bg-3">SYSTEM BREACH • DATA CORRUPTED •</div>
+<div class="bg-layer bg-4">⚠️ HACKER ZONE ⚠️ •</div>
 
-        <footer class="footer">
-            <p>[MODHU ROY] &copy; 2024 // PROTOCOL STATUS: Hacked </p>
-        </footer>
-
-    </div>
+<div class="content-box">
+  <h1 data-text="⚠️ THIS SITE IS DEFACED (PRACTICE MODE)">
+    ⚠️ THIS SITE IS DEFACED (HACKED BY MS ROY)
+  </h1>
+  <div class="typed">This is for learning security.</div>
+</div>
 
 </body>
 </html>
